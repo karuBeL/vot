@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="/static/css/signin.css" rel="stylesheet">
+
+        <title>Upload file</title>
+    </head>
+    <body class="text-center">
+        <main class="form-signin">
+            <h1 class="title">Upload file</h1>
+
+            
+
+            <form action="{{ url_for('downloads') }}" method="POST">
+                <button type="submit">Download file</button>
+            </form>
+
+            <!--<form action="/homepage" method="POST">
+                <div class="form-floating">
+                    <input type="text" name="receiver" class="form-control" id="receiver" placeholder="pesho" value="{{receiver}}">
+                    <label for="floatingInput">Receiver</label>
+                </div>
+            </form> -->
+
+            <form action="/homepage" method="POST" enctype="multipart/form-data">
+                {{form.hidden_tag()}}
+                {{form.receiver}}
+                {{form.file()}}
+                {{form.submit()}}
+            </form>
+
+            
+            
+        </main>
+    </body>
+</html>

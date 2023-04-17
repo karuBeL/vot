@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="/static/css/signin.css" rel="stylesheet">
+
+        <title>Download file</title>
+    </head>
+    <body class="text-center">
+        <main class="form-signin">
+            <h1 class="title">Download file</h1>
+            <!-- <a href="{{ url_for('download_file') }}">Download</a> -->
+            <form action="{{ url_for('homepage') }}" method="POST">
+                <button type="submit">Upload file</button>
+            </form>
+
+            <div class = "lists-container">
+                <div>
+                    <h2>Received files
+                    </h2>
+                    <ul>
+                        {%for file in received_files%}
+                            <li>
+                                <form action="{{ url_for('download_file',file=file.filename) }}" method="POST">
+                                    <button type="submit">{{file.filename}} sent:{{file.time}} by {{file.sender}}</button>
+                                </form>
+                            </li>
+                        {%endfor%}
+                    </ul>
+                </div>
+    
+                <div>
+                    <h2>Sent files
+                    </h2>
+                    <ul>
+                        {%for file in sent_files%}
+                            <li>
+                                <form action="{{ url_for('download_file',file=file.filename) }}" method="POST">
+                                    <button type="submit">{{file.filename}} sent:{{file.time}} to {{file.sender}}</button>
+                                </form>
+                            </li>
+                        {%endfor%}
+                    </ul>
+                </div>
+            </div>
+            
+
+        </main>
+    </body>
+</html>
